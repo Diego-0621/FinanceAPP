@@ -1,0 +1,29 @@
+package com.example.financeapp.data.model
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+/**
+ * SharedExpense es la entidad para gastos compartidos entre varias personas.
+ */
+@Entity(tableName = "shared_expenses")
+data class SharedExpense(
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
+    val creatorUserId: Long,
+    val totalAmount: Double,
+    val description: String,
+    val category: ExpenseCategory,
+    val date: Long = System.currentTimeMillis(),
+    val participants: String,
+    val settled: Boolean = false
+)
+
+/**
+ * Se crea la clase Participants  para representar a los participantes de gastos compartidos.
+ */
+data class Participant(
+    val name: String,
+    val amount: Double,
+    val paid: Boolean = false
+)

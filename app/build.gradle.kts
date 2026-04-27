@@ -48,17 +48,17 @@ dependencies {
     //ksp("androidx.room:room-compiler:2.8.4")
 
     //NAVEGACIÓN
-    implementation("androidx.navigation.navigation-compose:2.9.7")
+    implementation("androidx.navigation:navigation-compose:2.8.5")
 
     //VIEWMODEL
-    implementation("androix.lifecycle:lifecycle-viewmodel-compose:2.10.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.10.0")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.10.0")
 
     //Material Icons Extend
     implementation("androidx.compose.material:material-icons-extended:1.7.8")
 
     //Charts o gráficas
-    implementation("com.ptrykandpatrick.vico:compose-m3:2.0.0-alpha.28")
+    implementation("com.patrykandpatrick.vico:compose-m3:1.15.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

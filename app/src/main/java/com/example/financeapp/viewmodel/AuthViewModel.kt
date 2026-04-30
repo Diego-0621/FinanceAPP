@@ -3,6 +3,7 @@ package com.example.financeapp.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.financeapp.data.dao.UserDao
 import com.example.financeapp.data.database.AppDatabase
 import com.example.financeapp.data.model.User
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -38,6 +39,36 @@ class AuthViewModel(application: Application) : AndroidViewModel(application){
             }catch (e: Exception){
                 _authState.value = AuthState.Error("Error al iniciar sesión: ${e.message}")
         }
+    }
+
+    fun register(name:String, email: String, password: String){
+        viewModelScope.launch lauch@{
+            _authState.value = AuthState.Loading
+
+            try {
+                val existingUser = userDao.getUserByEmail(email)
+                if(existingUser != null){
+                    _authState.value = AuthState.Error("El mail ya está registrado")
+                    return@lauch
+                }
+                val newUser = User(
+                    name = name,
+                    email= email,
+                    passwordHash = hashPassword(password)
+
+                )
+                val userId = userDao.insert(newUser)
+                _currendUser.value = newUser.copy(id = userId)
+                _authState.value = AuthState.Success
+            }catch (e: Exception){
+
+            }
+        }
+    }
+
+    fun logout(){
+        _currendUser.value = null
+        _authState.value = AuthState.Idle
     }
 
     private fun hashPassword(password: String): String{

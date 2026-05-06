@@ -9,8 +9,6 @@ import androidx.room.Update
 import com.example.financeapp.data.model.SharedExpense
 import kotlinx.coroutines.flow.Flow
 
-interface SharedExpenseDao {
-
     @Dao
     interface SharedExpenseDao {
 
@@ -36,4 +34,3 @@ interface SharedExpenseDao {
 
     }
 
-}

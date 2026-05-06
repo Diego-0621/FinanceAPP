@@ -10,7 +10,9 @@ import com.example.financeapp.data.dao.ExpenseDao
 import com.example.financeapp.data.dao.SharedExpenseDao
 import com.example.financeapp.data.dao.UserDao
 import com.example.financeapp.data.model.Budget
+import com.example.financeapp.data.model.Expense
 import com.example.financeapp.data.model.SharedExpense
+import com.example.financeapp.data.model.User
 
 @Database(
     entities = [User::class, Expense::class, Budget::class, SharedExpense::class],
@@ -47,5 +49,3 @@ abstract class AppDatabase : RoomDatabase() {
         }
     }
 
-
-}
